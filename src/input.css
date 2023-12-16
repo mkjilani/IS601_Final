@@ -32,3 +32,34 @@ body {
     font-size: 36px;
     font-weight: bold;
 }
+.sub-text {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.search-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.search-input {
+    padding: 10px;
+    width: 300px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #072F94;
+    color: #fff;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
