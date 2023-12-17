@@ -42,13 +42,13 @@
         <p class="font-abril-fatface text-2xl font-bold mt-0 mb-5">Learn How to SAVE more by shipping with Us</p>
         <p class="text-blue-500 text-2xl font-bold ">Join Our Rewards Program & Save!</p>
     </div>
-    <div>
-        <div id="emailForm">
-            <form id="subscribeForm">
-                <input type="email"  placeholder="Your Email" required>
-                <button type="button" onclick="showMessage()">Submit</button>
+    <div class="container mx-auto py-12 text-center">
+        <div id="emailForm" class="max-w-md mx-auto">
+            <form id="subscribeForm" class="mb-4">
+                <input type="email"  placeholder="Your Email" class="py-2 px-4 rounded-l-md focus:outline-none border border-r-0" required>
+                <button type="button" onclick="showMessage()" class="bg-blue-900 text-white py-2 px-4 rounded-full focus:outline-none hover:bg-blue-600">Submit</button>
             </form>
-            <p id="successMessage">Thank you for your request!</p>
+            <p id="successMessage" class="hidden text-green-600">Thank you for your request!</p>
         </div>
     </div>
     <script>
