@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="src/Support.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courgette&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title>WeShipIt</title>
+</head>
+<body class="font-sans">
+  <!-- Navigation Bar -->
+  <nav class="bg-blue-500">
+    <div class="container mx-auto flex justify-between items-center ">
+      <!-- Logo -->
+
+        <div class="logo">WeShipIt</div>
+
+      <!-- Navigation Links -->
+      <ul class="font-serif flex space-x-10">
+        <li><a href="/Shipping" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Shipping</a></li>
+        <li><a href="/Tracking" class="font-abril-fatface ml-10 text-white  hover:bg-blue-700 hover:text-white text-xl">Tracking</a></li>
+        <li><a href="/Support" class="font-abril-fatface ml-10 text-white  hover:bg-blue-700 hover:text-white text-xl">Support</a></li>
+        <li><a href="/Support" class="font-abril-fatface ml-10 text-white  hover:bg-blue-700 hover:text-white text-xl">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="container mx-auto mt-8 flex">
+    <!-- Text Content -->
+    <div class="font-serif hero-image">
+
+    </div>
+  </section>
+
+
+ 
+    <div>
+
+        <h2>Support Feedback Form</h2>
+
+        <!-- Support Feedback Form -->
+        <form id="feedbackForm" action="#" method="post">
+
+            <!-- Support Feedback Dropdown -->
+            <div>
+                <label for="feedbackType">Select Feedback Type:</label>
+                <select id="feedbackType" name="feedbackType"
+                    >
+                    <option value="Option">Choose Support Option</option>
+                    <option value="Track">Track a Package</option>
+                    <option value="Account">Account Information</option>
+                    <option value="Pickup">Request a Pickup</option>
+                </select>
+            </div>
+
+            <!-- Support Feedback Message -->
+            <div>
+                <label for="feedbackMessage">Your Message:</label>
+                <textarea id="feedbackMessage" name="feedbackMessage"
+                    
+                    rows="4"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                ">
+                Submit Feedback
+            </button>
+
+        </form>
+
+        <!-- Display Message Based on Feedback Type -->
+        <div id="submissionMessage"></div>
+
+    </div>
+
+    <script>
+        // JavaScript to handle form submission and display specific messages
+        document.getElementById('feedbackForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get selected feedback type
+            var feedbackType = document.getElementById('feedbackType').value;
+
+            // Get feedback message
+            var feedbackMessage = document.getElementById('feedbackMessage').value;
+
+            // Display specific message based on feedback type
+            var submissionMessage = document.getElementById('submissionMessage');
+            switch (feedbackType) {
+
+                case 'Track':
+                    submissionMessage.textContent = 'Your package will arive 9:00am Thursday';
+                    break;
+                case 'Account':
+                    submissionMessage.textContent = 'We will check your account information';
+                    break;
+                case 'Pickup':
+                    submissionMessage.textContent = 'We can discuss package pickup';
+                    break;
+                default:
+                    submissionMessage.textContent = '';
+            }
+        });
+    </script>
+
+
+
+    <footer class="bg-blue-500 text-white py-2">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-4">Connect with Us</h2>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="text-white hover:text-blue-900">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="text-white hover:text-blue-900">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-white hover:text-blue-900">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-white hover:text-blue-900">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="text-white hover:text-blue-900">
+                    <i class="fab fa-pinterest"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
