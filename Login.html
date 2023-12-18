@@ -7,7 +7,27 @@
     <!-- Include the Tailwind CSS stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 h-screen flex items-center justify-center">
+<body class="font-sans">
+    <!-- Navigation Bar -->
+  <nav class="bg-blue-500">
+    <div class="container mx-auto flex justify-between items-center ">
+      <!-- Logo -->
+
+        <div class="logo">WeShipIt</div>
+
+      <!-- Navigation Links -->
+      <ul class="font-serif flex space-x-10">
+        <li><a href="/" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Home</a></li>
+        <li><a href="/Shipping.html" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Shipping</a></li>
+        <li><a href="/Tracking.html" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Tracking</a></li>
+        <li><a href="/Support.html" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Support</a></li>
+        <li><a href="/Login.html" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+ <div class="bg-gray-100 h-screen flex items-center justify-center">
 
     <div class="bg-white p-8 rounded shadow-md w-96">
         <h2 class="text-2xl font-bold mb-4">Login</h2>
@@ -40,6 +60,28 @@
             document.getElementById('message').innerText = 'Login successful! You may proceed to review account';
         }
     </script>
+    <footer class="bg-blue-500 text-white fixed bottom-0 left-0 w-full py-2">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-4">Connect with Us</h2>
+            <div class="flex justify-center space-x-4">
+                <a href="http://www.facebook.com" class="text-white hover:text-blue-900">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="http://www.twitter.com" class="text-white hover:text-blue-900">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="http://www.linkedin.com" class="text-white hover:text-blue-900">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="http://www.instagram.com" class="text-white hover:text-blue-900">
+                  <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+        </div>
+    </footer>
+
+    
 
 </body>
+
 </html>
