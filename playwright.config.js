@@ -1,52 +1,144 @@
-import { defineConfig, devices } from '@playwright/test';
-module.exports = defineConfig({
-  testDir: './tests',
-  /* Run tests in files in parallel */
-  fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? 'github' : 'list',
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+const { chromium } = require('playwright');
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-  },
+(async () => {
+  const browser = await chromium.launch();
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
-  /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+  // Navigate to your HTML file
+  await page.goto('C:\Users\harrison\Desktop\IS601_Final\index.html');
+  await page.goto('C:\Users\harrison\Desktop\IS601_Final\Login.html');
+  await page.goto('C:\Users\harrison\Desktop\IS601_Final\Shipping.html');
+  await page.goto('C:\Users\harrison\Desktop\IS601_Final\Support.html');
+  await page.goto('C:\Users\harrison\Desktop\IS601_Final\Tracking.html');
 
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
+  // Test cookie consent banner visibility
+  const cookieConsentBanner = await page.$('#cookieConsent');
+  expect(cookieConsentBanner).not.toBeNull();
 
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ..devices['Desktop Chrome'], channel: 'chrome' },
-    // },
-  ],
+  // Test navigation links
+  await page.click('a[href="/Shipping.html"]');
+  // Add more navigation link tests as needed
+
+  // Test search input and button
+  await page.type('.search-input', 'test tracking number');
+  await page.click('.search-button');
+
+  // Test form submission
+  await page.type('#mce-EMAIL', 'test@example.com');
+  await page.click('#mc-embedded-subscribe');
+
+  // Test footer social media links
+  await page.click('a[href="http://www.facebook.com"]');
+  await page.click('a[href="http://www.twitter.com"]');
+  await page.click('a[href="http://www.linkedin.com.com"]');
+  await page.click('a[href="http://www.instagram.com"]');
+
+  // Fill in the login form
+  await page.fill('#username', 'your_username');
+  await page.fill('#password', 'your_password');
+
+  // Click the login button
+  await page.click('button');
+
+  // Wait for the success message to appear
+  await page.waitForSelector('#message');
+
+  // Get the text content of the success message
+  const successMessage = await page.textContent('#message');
+
+  // Check if the success message is as expected
+  expect(successMessage).toContain('Login successful');
+
+// Test the content of the hero section
+const heroText = await page.textContent('.hero-text');
+expect(heroText).toContain('WeShipIt online shipping tools options');
+
+// Test the content of the second text section
+const secondText = await page.textContent('.font-abril-fatface.text-gray-400.text-24');
+expect(secondText).toContain('Please choose which WeShipIt online shopping tool you want to access:');
+
+// Test the presence of two sections with shipping options
+const shippingOptionsSections = await page.$$('.max-w-md.mx-auto.bg-white.p-6.rounded-md.shadow-md');
+expect(shippingOptionsSections.length).toBe(2);
+
+// Test the content of the first shipping options section
+const firstShippingOptionsText = await shippingOptionsSections[0].textContent('h2');
+expect(firstShippingOptionsText).toContain('WeShipIt Manager - Account Holders');
+
+// Test the content of the second shipping options section
+const secondShippingOptionsText = await shippingOptionsSections[1].textContent('h2');
+expect(secondShippingOptionsText).toContain('WeShipIt Manager - Guests');
+
+ // Test form submission for each feedback type
+ const feedbackTypes = ['Track', 'Account', 'Pickup'];
+
+ for (const feedbackType of feedbackTypes) {
+   // Select feedback type
+   await page.selectOption('#feedbackType', feedbackType);
+
+   // Type feedback message
+   await page.fill('#feedbackMessage', 'Test feedback message for ' + feedbackType);
+
+   // Submit form
+   await page.click('button[type="submit"]');
+
+   // Wait for the submission message
+   await page.waitForSelector('#submissionMessage');
+
+   // Get the text content of the submission message
+   const submissionMessage = await page.textContent('#submissionMessage');
+
+   // Check if the submission message contains the expected text
+   switch (feedbackType) {
+     case 'Track':
+       expect(submissionMessage).toContain('Your package will arrive');
+       break;
+     case 'Account':
+       expect(submissionMessage).toContain('We will check your account information');
+       break;
+     case 'Pickup':
+       expect(submissionMessage).toContain('We can discuss package pickup');
+       break;
+     default:
+       expect(submissionMessage).toBe('');
+   }
+
+   // Clear feedback message for the next iteration
+   await page.fill('#feedbackMessage', '');
+
+   // Reset the form
+   await page.click('a[href="/Support.html"]');
+ }
+// Test search functionality
+const searchTestData = [
+  { selector: 'input[placeholder="Search Tracking Number"]', buttonText: 'Your package will arrive Wednesday, 9:00am' },
+  { selector: 'input[placeholder="Search by Reference Number"]', buttonText: 'Your package will arrive Monday, 2:00pm' },
+  { selector: 'input[placeholder="Search by TCN"]', buttonText: 'Your package will arrive Tuesday, 1:00pm' },
+  { selector: 'input[placeholder="Proof of Delivery"]', buttonText: 'Here is your proof of delivery -> Package delivered 2:00pm on Thursday' },
+];
+for (const testData of searchTestData) {
+  // Type into the search input
+  await page.type(testData.selector, 'Test input');
+
+  // Click the search button
+  await page.click(`button[onclick="showOutput('${testData.buttonText}')"]`);
+
+  // Wait for the output element
+  await page.waitForSelector('#output');
+
+  // Get the text content of the output element
+  const outputText = await page.textContent('#output');
+
+  // Check if the output text contains the expected text
+  expect(outputText).toContain(`Your feedback -> ${testData.buttonText}`);
+
+  // Clear the search input for the next iteration
+  await page.fill(testData.selector, '');
+}
+  // Close the browser
+  await browser.close();
+})();
 
 //  Run your local dev server before starting the tests */
   webServer: {
