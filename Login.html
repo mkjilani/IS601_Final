@@ -3,38 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WeShipIt - Login Form</title>
-
+    <title>Login Form</title>
+    <!-- Include the Tailwind CSS stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body >
+<body class="bg-gray-100 h-screen flex items-center justify-center">
 
-    <div >
-        <h2 >Login</h2>
+    <div class="bg-white p-8 rounded shadow-md w-96">
+        <h2 class="text-2xl font-bold mb-4">Login</h2>
 
         <!-- Login Form -->
         <form>
-            <div >
-                <label for="username" >Username:</label>
-                <input type="text" id="username" name="username" >
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-gray-600">Username:</label>
+                <input type="text" id="username" name="username" class="mt-1 p-2 w-full border rounded-md">
             </div>
 
-            <div >
-                <label for="password" >Password:</label>
-                <input type="password" id="password" name="password" >
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-600">Password:</label>
+                <input type="password" id="password" name="password" class="mt-1 p-2 w-full border rounded-md">
             </div>
 
-            <button type="button" onclick="login()" >
+            <button type="button" onclick="login()" class="bg-blue-500 text-white p-2 rounded-md w-full">
                 Login
             </button>
         </form>
 
         <!-- Message Display -->
-        <div id="message" ></div>
+        <div id="message" class="mt-4 text-green-500"></div>
     </div>
 
     <script>
         function login() {
-
+            // You can perform login logic here
+            // For demonstration purposes, let's display a success message
             document.getElementById('message').innerText = 'Login successful! You may proceed to review account';
         }
     </script>
