@@ -44,8 +44,19 @@
         <!-- Text Content -->
         <div class="font-serif hero-image">
             <div class="font-abril-fatface hero-text text-blue-900 text-2xl">Your Package! Our Promise...</div>
-            <input type="text" class="search-input" placeholder="Search...">
-            <button class="search-button rounded-full ">Track</button>
+            <!-- Search Box -->
+            <div class="mb-4">
+                <label for="search" class="block text-sm font-medium text-blue-600">Search:</label>
+                <input type="text" id="search" name="search" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-blue-600">
+            </div>
+
+        <!-- Button -->
+        <button id="submitButton" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+            Submit
+        </button>
+
+        <!-- Display Message -->
+        <div id="message" class="mt-4 text-red-600"></div>
         </div>
     </section>
     <div class="font-serif p-4 text-center">
@@ -85,6 +96,15 @@
 
 </div>
      <script>
+        document.getElementById('submitButton').addEventListener('click', function () {
+            // Get the value from the search box
+            const searchValue = document.getElementById('search').value;
+
+            // Display a message with the search value
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = `Your package will arrive Monday, 8:30am,  Tracking ID: ${searchValue}`;
+        })
+
         function showMessage() {
             document.getElementById('subscribeForm').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
