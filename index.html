@@ -13,6 +13,15 @@
     <title>WeShipIt</title>
 </head>
 <body class="font-sans">
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="fixed bottom-0 bg-gray-800 text-white p-2 text-center w-full">
+        <p class="text-sm">
+            This website uses cookies to ensure you get the best experience on our website.
+            <button onclick="acceptCookies()" class="ml-4 bg-green-500 px-4 py-1 rounded">Accept</button>
+        </p>
+    </div>
+
   <!-- Navigation Bar -->
   <nav class="bg-blue-500">
     <div class="container mx-auto flex justify-between items-center ">
@@ -79,7 +88,20 @@
             document.getElementById('subscribeForm').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
         }
+        // Check if user has previously accepted cookies
+        if (!localStorage.getItem('cookiesAccepted')) {
+            // Show the cookie consent banner
+            document.getElementById('cookieConsent').style.display = 'block';
+        }
 
+        // Function to accept cookies
+        function acceptCookies() {
+            // Set a flag in localStorage to remember user's choice
+            localStorage.setItem('cookiesAccepted', 'true');
+
+            // Hide the cookie consent banner
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
     </script>
 <div class="font-serif container mx-auto py-12">
     <div class="flex flex-wrap -mx-4">
