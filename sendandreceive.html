@@ -20,5 +20,18 @@
 
             <button type="button" onclick="sendPackage()" class="bg-green-500 text-white p-2 rounded-md">Send Package</button>
         </form>
+        <!-- Display Package Receiving Result -->
+        <div id="receivingResult" class="mb-6">
+            <h2 class="text-xl font-semibold mb-2">Receiving Result:</h2>
+            <p><strong>Package Content:</strong> <span id="receivedPackageContent"></span></p>
+            
+            <!-- Feedback Form -->
+            <form id="feedbackForm" class="mt-4">
+                <label for="feedback" class="block text-sm font-medium text-gray-600">Provide Feedback:</label>
+                <textarea id="feedback" name="feedback" class="mt-1 p-2 border rounded-md w-full" required></textarea>
+                <button type="button" onclick="provideFeedback()" class="bg-blue-500 text-white p-2 rounded-md mt-2">Provide Feedback</button>
+            </form>
+        </div>
+    </div>
 
 
