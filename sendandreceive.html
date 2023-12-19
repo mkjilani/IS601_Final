@@ -34,4 +34,29 @@
         </div>
     </div>
 
+    <script>
+        function sendPackage() {
+            const packageContent = document.getElementById("packageContent").value;
+
+            // Simulate sending logic (replace with actual logic)
+            console.log(`Package with content "${packageContent}" has been sent!`);
+
+            // Display the sending result
+            alert(`Package with content "${packageContent}" has been sent!`);
+        }
+
+        function provideFeedback() {
+            const feedback = document.getElementById("feedback").value;
+            alert(`Feedback submitted: "${feedback}"`);
+
+            // Display the feedback result
+            const feedbackResultElement = document.getElementById("feedbackResult");
+            feedbackResultElement.innerHTML = "<h2 class='text-xl font-semibold mb-2'>Feedback Result:</h2>" +
+                                               "<p><strong>Feedback:</strong> " + feedback + "</p>";
+        }
+    </script>
+
+</body>
+</html>
+
 
