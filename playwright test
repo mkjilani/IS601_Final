@@ -6,7 +6,7 @@ const { chromium } = require('playwright');
   const page = await context.newPage();
 
   // Navigate to the initial page
-  await page.goto('your_initial_page_url_here');
+  await page.goto('/Users/tracyharrison/Documents/GitHub/IS601_Final/index.html');
 
   // Enter a search value
   await page.type('#search', 'your_search_value_here');
@@ -16,6 +16,28 @@ const { chromium } = require('playwright');
 
   // Wait for navigation to complete
   await page.waitForNavigation();
+
+  // Assuming the next page URL is known, navigate to the next page
+  await page.goto('your_next_page_url_here');
+
+  // Perform additional actions on the next page if needed
+
+  // Navigate to the login page
+  await page.goto('/Users/tracyharrison/Documents/GitHub/IS601_Final/Login.html');
+
+  // Fill in the login form
+  await page.type('#username', 'your_username');
+  await page.type('#password', 'your_password');
+
+  // Click the login button
+  await page.click('button');
+
+  // Wait for the login success message to appear
+  await page.waitForSelector('#message');
+
+  // Log the success message
+  const message = await page.$eval('#message', (el) => el.innerText);
+  console.log(message);
 
   // Assuming the next page URL is known, navigate to the next page
   await page.goto('your_next_page_url_here');
