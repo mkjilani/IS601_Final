@@ -17,8 +17,8 @@ const { chromium } = require('playwright');
   // Wait for navigation to complete
   await page.waitForNavigation();
 
-  // Assuming the next page URL is known, navigate to the next page
-  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page.html');
+  // Assuming the next page URL is known, navigate to the next page after search
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page_after_search.html');
 
   // Perform additional actions on the next page if needed
 
@@ -39,10 +39,21 @@ const { chromium } = require('playwright');
   const message = await page.$eval('#message', (el) => el.innerText);
   console.log(message);
 
-  // Assuming the next page URL is known, navigate to the next page
+  // Assuming the next page URL after login is known, navigate to the next page
   await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page_after_login.html');
 
   // Perform additional actions on the next page if needed
+
+  // Navigate back to the main page
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/index.html');
+
+  // Click on the "Proceed as Guest" button
+  await page.click('button:has-text("Proceed as Guest")');
+
+  // Wait for navigation to complete (assuming guest access redirects to another page)
+  await page.waitForNavigation();
+
+  // Perform additional actions on the guest-access page if needed
 
   // Close the browser
   await browser.close();
