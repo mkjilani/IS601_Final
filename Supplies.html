@@ -35,3 +35,21 @@
         <div id="orderConfirmation"></div>
     </div>
 
+    <script>
+        function orderSupplies() {
+            const supplyType = document.getElementById("supplyType").value;
+            const quantity = document.getElementById("quantity").value;
+
+            // Simulate order confirmation (replace with actual logic)
+            const orderConfirmationMessage = `Ordered ${quantity} ${supplyType}(s) successfully!`;
+
+            // Display the order confirmation
+            const orderConfirmationElement = document.getElementById("orderConfirmation");
+            orderConfirmationElement.innerHTML = "<h2 class='text-xl font-semibold mb-2'>Order Confirmation:</h2>" +
+                                                 "<p>" + orderConfirmationMessage + "</p>";
+        }
+    </script>
+
+</body>
+</html>
+
