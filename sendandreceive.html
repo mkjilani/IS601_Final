@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send & Receive Package</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-semibold mb-4">Send & Receive Package</h1>
+
+        <!-- Form for Sending a Package -->
+        <form id="sendForm" class="mb-6">
+            <div class="mb-4">
+                <label for="packageContent" class="block text-sm font-medium text-gray-600">Package Content:</label>
+                <input type="text" id="packageContent" name="packageContent" class="mt-1 p-2 border rounded-md w-full" required>
+            </div>
+
+            <button type="button" onclick="sendPackage()" class="bg-green-500 text-white p-2 rounded-md">Send Package</button>
+        </form>
+        <!-- Display Package Receiving Result -->
+        <div id="receivingResult" class="mb-6">
+            <h2 class="text-xl font-semibold mb-2">Receiving Result:</h2>
+            <p><strong>Package Content:</strong> <span id="receivedPackageContent"></span></p>
+            
+            <!-- Feedback Form -->
+            <form id="feedbackForm" class="mt-4">
+                <label for="feedback" class="block text-sm font-medium text-gray-600">Provide Feedback:</label>
+                <textarea id="feedback" name="feedback" class="mt-1 p-2 border rounded-md w-full" required></textarea>
+                <button type="button" onclick="provideFeedback()" class="bg-blue-500 text-white p-2 rounded-md mt-2">Provide Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function sendPackage() {
+            const packageContent = document.getElementById("packageContent").value;
+
+            // Simulate sending logic (replace with actual logic)
+            console.log(`Package with content "${packageContent}" has been sent!`);
+
+            // Display the sending result
+            alert(`Package with content "${packageContent}" has been sent!`);
+        }
+
+        function provideFeedback() {
+            const feedback = document.getElementById("feedback").value;
+            alert(`Feedback submitted: "${feedback}"`);
+
+            // Display the feedback result
+            const feedbackResultElement = document.getElementById("feedbackResult");
+            feedbackResultElement.innerHTML = "<h2 class='text-xl font-semibold mb-2'>Feedback Result:</h2>" +
+                                               "<p><strong>Feedback:</strong> " + feedback + "</p>";
+        }
+    </script>
+
+</body>
+</html>
+
+
