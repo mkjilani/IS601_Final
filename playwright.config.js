@@ -11,6 +11,7 @@ const { chromium } = require('playwright');
   await page.goto('C:\Users\harrison\Desktop\IS601_Final\Shipping.html');
   await page.goto('C:\Users\harrison\Desktop\IS601_Final\Support.html');
   await page.goto('C:\Users\harrison\Desktop\IS601_Final\Tracking.html');
+  await page.goto('/Users/tracyharrison/Documents/GitHub/IS601_Final/hoursandlocations.html');
 
   // Test cookie consent banner visibility
   const cookieConsentBanner = await page.$('#cookieConsent');
@@ -135,6 +136,12 @@ for (const testData of searchTestData) {
 
   // Clear the search input for the next iteration
   await page.fill(testData.selector, '');
+
+  // Test for the existence of elements
+  await page.waitForSelector('h1:has-text("Business Hours and Locations")');
+  await page.waitForSelector('table:has-text("Monday")');
+  await page.waitForSelector('table:has-text("Philadelphia")');
+
 }
   // Close the browser
   await browser.close();
