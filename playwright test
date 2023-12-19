@@ -1,12 +1,6 @@
-const { chromium } = require('playwright');
 
-(async () => {
-  const browser = await chromium.launch();
-  const context = await browser.newContext();
-  const page = await context.newPage();
-
-  // Navigate to the initial page
-  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/index.html');
+  const cookieConsentBanner = await page.$('#cookieConsent');
+  expect(cookieConsentBanner).not.toBeNull();
 
   // Enter a search value
   await page.type('#search', 'your_search_value_here');
@@ -22,8 +16,8 @@ const { chromium } = require('playwright');
 
   // Perform additional actions on the next page if needed
 
-  // Navigate to the login page
-  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/Login.html');
+// Navigate to the login page
+  await page.goto('https://github.com/trace2982/IS601_Final/blob/main/Login.html');
 
   // Fill in the login form
   await page.type('#username', 'your_username');
@@ -44,17 +38,225 @@ const { chromium } = require('playwright');
 
   // Perform additional actions on the next page if needed
 
-  // Navigate back to the main page
-  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/index.html');
+ // Navigate back to the main page
+  await page.goto('https://github.com/trace2982/IS601_Final/blob/main/index.html');
 
-  // Click on the "Proceed as Guest" button
-  await page.click('button:has-text("Proceed as Guest")');
 
-  // Wait for navigation to complete (assuming guest access redirects to another page)
-  await page.waitForNavigation();
+ // Navigate to the page
+  await page.goto('https://github.com/trace2982/IS601_Final/blob/main/Shipping.html');
 
-  // Perform additional actions on the guest-access page if needed
+  // Test navigation links
+  await page.click('a[href="/"]');
+  // Add more navigation link tests as needed
+
+  // Test the content of the hero section
+  const heroText = await page.textContent('.hero-text');
+  expect(heroText).toContain('WeShipIt online shipping tools options');
+
+  // Test the content of the second text section
+  const secondText = await page.textContent('.font-abril-fatface.text-gray-400.text-24');
+  expect(secondText).toContain('Please choose which WeShipIt online shopping tool you want to access:');
+
+  // Test the presence of two sections with shipping options
+  const shippingOptionsSections = await page.$$('.max-w-md.mx-auto.bg-white.p-6.rounded-md.shadow-md');
+  expect(shippingOptionsSections.length).toBe(2);
+
+  // Test the content of the first shipping options section
+  const firstShippingOptionsText = await shippingOptionsSections[0].textContent('h2');
+  expect(firstShippingOptionsText).toContain('WeShipIt Manager - Account Holders');
+
+  // Test the content of the second shipping options section
+  const secondShippingOptionsText = await shippingOptionsSections[1].textContent('h2');
+  expect(secondShippingOptionsText).toContain('WeShipIt Manager - Guests');
+
+ // Assuming the next page URL after login is known, navigate to the next page
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page_after_login.html');
+
+  // Perform additional actions on the next page if needed
+
+ // Navigate back to the main page
+  await page.goto('https://github.com/trace2982/IS601_Final/blob/main/index.html');
+
+
+  // Navigate to the HTML page
+  await page.goto('path/to/your/OrderSupplies.html');
+
+  // Fill and submit the form
+  await page.selectOption('#supplyType', 'tape');
+  await page.fill('#quantity', '5');
+  await page.click('button:text("Order Supplies")');
+
+  // Wait for the order confirmation message
+  await page.waitForSelector('#orderConfirmation');
+
+  // Get and log the confirmation message
+  const confirmationMessage = await page.innerText('#orderConfirmation');
+  console.log('Order Confirmation:', confirmationMessage);
+
+ // Assuming the next page URL after login is known, navigate to the next page
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page_after_login.html');
+
+  // Perform additional actions on the next page if needed
+
+ // Navigate back to the main page
+  await page.goto('https://github.com/trace2982/IS601_Final/blob/main/index.html');
+
+  // Navigate to the page
+  await page.goto('Support.html');
+
+  // Test navigation links
+  await page.click('a[href="/Shipping.html"]');
+  // Add more navigation link tests as needed
+
+  // Test form submission for each feedback type
+  const feedbackTypes = ['Track', 'Account', 'Pickup'];
+
+  for (const feedbackType of feedbackTypes) {
+    // Select feedback type
+    await page.selectOption('#feedbackType', feedbackType);
+
+    // Type feedback message
+    await page.fill('#feedbackMessage', 'Test feedback message for ' + feedbackType);
+
+    // Submit form
+    await page.click('button[type="submit"]');
+
+    // Wait for the submission message
+    await page.waitForSelector('#submissionMessage');
+
+    // Get the text content of the submission message
+    const submissionMessage = await page.textContent('#submissionMessage');
+
+    // Check if the submission message contains the expected text
+    switch (feedbackType) {
+      case 'Track':
+        expect(submissionMessage).toContain('Your package will arrive');
+        break;
+      case 'Account':
+        expect(submissionMessage).toContain('We will check your account information');
+        break;
+      case 'Pickup':
+        expect(submissionMessage).toContain('We can discuss package pickup');
+        break;
+      default:
+        expect(submissionMessage).toBe('');
+    }
+
+    // Clear feedback message for the next iteration
+    await page.fill('#feedbackMessage', '');
+
+    // Reset the form
+    await page.click('a[href="/Support.html"]');
+  }
+
+ // Assuming the next page URL after login is known, navigate to the next page
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page_after_login.html');
+
+  // Perform additional actions on the next page if needed
+
+ // Navigate back to the main page
+  await page.goto('https://github.com/trace2982/IS601_Final/blob/main/index.html');
+
+
+  // Navigate to the page
+  await page.goto('Tracking.html');
+
+  // Test navigation links
+  await page.click('a[href="/Shipping.html"]');
+  // Add more navigation link tests as needed
+
+  // Test search functionality
+  const searchTestData = [
+    { selector: 'input[placeholder="Search Tracking Number"]', buttonText: 'Your package will arrive Wednesday, 9:00am' },
+    { selector: 'input[placeholder="Search by Reference Number"]', buttonText: 'Your package will arrive Monday, 2:00pm' },
+    { selector: 'input[placeholder="Search by TCN"]', buttonText: 'Your package will arrive Tuesday, 1:00pm' },
+    { selector: 'input[placeholder="Proof of Delivery"]', buttonText: 'Here is your proof of delivery -> Package delivered 2:00pm on Thursday' },
+  ];
+
+  for (const testData of searchTestData) {
+    // Type into the search input
+    await page.type(testData.selector, 'Test input');
+
+    // Click the search button
+    await page.click(`button[onclick="showOutput('${testData.buttonText}')"]`);
+
+    // Wait for the output element
+    await page.waitForSelector('#output');
+
+    // Get the text content of the output element
+    const outputText = await page.textContent('#output');
+
+    // Check if the output text contains the expected text
+    expect(outputText).toContain(`Your feedback -> ${testData.buttonText}`);
+
+    // Clear the search input for the next iteration
+    await page.fill(testData.selector, '');
+  }
+// Assuming the next page URL after login is known, navigate to the next page
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page_after_login.html');
+
+  // Perform additional actions on the next page if needed
+
+ // Navigate back to the main page
+  await page.goto('https://github.com/trace2982/IS601_Final/blob/main/index.html');
+
+
+  // Navigate to the HTML page
+  await page.goto('hoursandlocations.html');
+
+  // Verify the presence of the Hours table
+  await page.waitForSelector('h2:has-text("Hours")');
+  const hoursTable = await page.waitForSelector('table:has-text("Monday")');
+
+  // Verify the presence of the Locations table
+  await page.waitForSelector('h2:has-text("Locations")');
+  const locationsTable = await page.waitForSelector('table:has-text("Philadelphia")');
+
+  // Log success message if everything is as expected
+  console.log('Test passed successfully!');
+
+// Assuming the next page URL after login is known, navigate to the next page
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page_after_login.html');
+
+  // Perform additional actions on the next page if needed
+
+ // Navigate back to the main page
+  await page.goto('https://github.com/trace2982/IS601_Final/blob/main/index.html');
+
+
+  // Navigate to the HTML page
+  await page.goto('sendandreceive.html');
+
+  // Fill out the "Send Package" form
+  await page.fill('#packageContent', 'Example Package Content');
+
+  // Click the "Send Package" button
+  await page.click('button:has-text("Send Package")');
+
+  // Wait for the alert and close it
+  const alert = await page.waitForEvent('dialog');
+  console.log(alert.message());
+  await alert.accept();
+
+  // Provide feedback
+  await page.fill('#feedback', 'Example Feedback');
+
+  // Click the "Provide Feedback" button
+  await page.click('button:has-text("Provide Feedback")');
+
+  // Wait for the feedback alert and close it
+  const feedbackAlert = await page.waitForEvent('dialog');
+  console.log(feedbackAlert.message());
+  await feedbackAlert.accept();
+
+  // Verify the feedback result
+  const feedbackResult = await page.waitForSelector('#feedbackResult');
+  if (await feedbackResult.isVisible())
+    console.log('Feedback result displayed successfully!');
+  else
+    console.log('Feedback result not displayed.');
 
   // Close the browser
   await browser.close();
 })();
+
