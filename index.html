@@ -14,13 +14,16 @@
 </head>
 <body class="font-sans">
 
-    <!-- Cookie Consent Banner -->
-    <div id="cookieConsent" class="fixed bottom-0 bg-gray-800 text-white p-2 text-center w-full">
-        <p class="text-sm">
-            This website uses cookies to ensure you get the best experience on our website.
-            <button onclick="acceptCookies()" class="ml-4 bg-green-500 px-4 py-1 rounded">Accept</button>
-        </p>
-    </div>
+        <!-- Cookie Banner -->
+        <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-gray-800 text-white p-4">
+            <div class="container mx-auto flex justify-between items-center">
+            <p class="text-sm">This website uses cookies to enhance the user experience. <a href="#">Learn more</a></p>
+            <div class="flex space-x-4">
+                <button id="accept-cookies" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Accept</button>
+                <button id="reject-cookies" class="border border-white text-white px-4 py-2 rounded hover:bg-red-700">Reject</button>
+            </div>
+            </div>
+        </div>
 
   <!-- Navigation Bar -->
   <nav class="bg-blue-500">
@@ -82,20 +85,31 @@
             document.getElementById('subscribeForm').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
         }
-        // Check if user has previously accepted cookies
-        if (!localStorage.getItem('cookiesAccepted')) {
-            // Show the cookie consent banner
-            document.getElementById('cookieConsent').style.display = 'block';
+           // Check if the user has previously accepted or rejected cookies
+        const userDecision = localStorage.getItem('cookieConsent');
+
+        // Display the cookie banner if the user hasn't made a decision yet
+        if (!userDecision) {
+        document.getElementById('cookie-banner').style.display = 'block';
         }
 
-        // Function to accept cookies
-        function acceptCookies() {
-            // Set a flag in localStorage to remember user's choice
-            localStorage.setItem('cookiesAccepted', 'true');
+        // Event listener for accepting cookies
+        document.getElementById('accept-cookies').addEventListener('click', function () {
+        // Set a flag in local storage to indicate that the user has accepted cookies
+        localStorage.setItem('cookieConsent', 'accepted');
+        // Hide the cookie banner
+        document.getElementById('cookie-banner').style.display = 'none';
+        });
 
-            // Hide the cookie consent banner
-            document.getElementById('cookieConsent').style.display = 'none';
-        }
+        // Event listener for rejecting cookies
+        document.getElementById('reject-cookies').addEventListener('click', function () {
+        // Set a flag in local storage to indicate that the user has rejected cookies
+        localStorage.setItem('cookieConsent', 'rejected');
+        // Hide the cookie banner
+        document.getElementById('cookie-banner').style.display = 'none';
+        // Implement additional logic for handling rejected cookies if needed
+        });
+        
     </script>
 <div class="font-serif container mx-auto py-12">
     <div class="flex flex-wrap -mx-4">
