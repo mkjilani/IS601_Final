@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include the Tailwind CSS stylesheet -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+
+  <link href="src/input.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courgette&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title>WeShipIt - Testimonials</title>
+  <style>
+    /* Set the main container to flex column and make it take full height */
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <div class="flex-grow">
+    <!-- Your page content goes here -->
+
+    <!-- Example content -->
+ <!--   <div class="container mx-auto py-8"></div> -->
+
+      <nav class="bg-blue-500 ">
+        <div class="container mx-auto flex justify-between items-center ">
+          <!-- Logo -->
+    
+            <div class="logo">WeShipIt</div>
+    
+          <!-- Navigation Links -->
+          <ul class="font-serif flex space-x-10">
+            <li><a href="/" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Home</a></li>
+            <li><a href="/Shipping.html" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Shipping</a></li>
+            <li><a href="/LoyaltyTestimonial.html" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Loyalty & Testimonials</a></li>
+            <li><a href="/Support.html" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Support</a></li>
+            <li><a href="/Login.html" class="font-abril-fatface ml-10 text-white hover:bg-blue-700 hover:text-white text-xl">Login</a></li>
+          </ul>
+        </div>
+      </nav>
+      <section class="mb-8">
+        <h2 class="text-4xl font-bold mb-4 text-center text-red-600 pt-20">Loyalty Offers</h2>
+    
+        <!-- Loyalty Offers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Offer  1 -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-4xl font-semibold mb-2">Free Express Shipping</h3>
+            <p class="text-gray-700 mb-4 text-2xl">Redeem your points for free express shipping on your next order. As a loyal customer, you can enjoy this unlimited privilege. </p>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 focus:outline-none" onclick="displayMessage('Free Express Shipping redeemed!')">Redeem Now</button>
+          </div>
+    
+          <!-- Offer  2 -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-4xl font-semibold mb-2">Discount on International Shipping</h3>
+            <p class="text-gray-700 mb-4 text-2xl">Get a special discount on your next international shipping request using your loyalty points. As a loyal customer, you can enjoy this unlimited privilege.</p>
+            <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 focus:outline-none" onclick="displayMessage('Discount on International Shipping redeemed!')">Redeem Now</button>
+          </div>
+    
+          <!-- Offer  3 -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-4xl font-semibold mb-2">Priority Package Handling</h3>
+            <p class="text-gray-700 mb-4 text-2xl">Use your loyalty points to prioritize the handling of your packages for faster delivery. As a loyal customer, you can enjoy this unlimited privilege.</p>
+            <button class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-orange-700 focus:outline-none" onclick="displayMessage('Priority Package Handling redeemed!')">Redeem Now</button>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Message Display Area -->
+      <div id="messageDisplay" class="hidden bg-green-200 text-green-800 p-4 rounded-md mb-4"></div>
+    
+    </div>
+    
+    <script>
+      // Function to display a message and show the message display area
+      function displayMessage(message) {
+        const messageDisplay = document.getElementById('messageDisplay');
+        messageDisplay.textContent = message;
+        messageDisplay.classList.remove('hidden');
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+          messageDisplay.classList.add('hidden');
+        }, 3000);
+      }
+    </script>
+      <div class="container mx-auto py-8">
+        <h2 class="text-3xl font-bold mb-8 text-center text-red-600">Testimonials</h2>
+        <!-- Testimonial Cards -->
+        <div class="flex justify-center space-x-8">
+    
+          <!-- Testimonial Card 1 -->
+          <div class="max-w-xs bg-red-100 p-6 rounded-lg shadow-md">
+            <img src="https://placekitten.com/200/200" alt="Testimonial Image" class="w-16 h-16 mx-auto mb-4 rounded-full">
+            <p class="text-gray-700 text-4xl ">"WeShipIt is awesome. My shipment arrived as scheduled and well in time for my grandson's birthday."</p>
+            <p class="text-red-500 text-lg mt-4">- John Doe</p>
+          </div>
+    
+          <!-- Testimonial Card 2 -->
+          <div class="max-w-xs bg-yellow-100 p-6 rounded-lg shadow-md">
+            <img src="https://placekitten.com/201/201" alt="Testimonial Image" class="w-16 h-16 mx-auto mb-4 rounded-full">
+            <p class="text-gray-700 text-4xl ">"WeShipIt is fantastic, they have convenient locations"</p>
+            <p class="text-red-500 text-lg mt-4">- Jane Doe</p>
+          </div>
+    
+          <!-- Testimonial Card 3 -->
+          <div class="max-w-xs bg-purple-200 p-6 rounded-lg shadow-md">
+            <img src="https://placekitten.com/202/202" alt="Testimonial Image" class="w-16 h-16 mx-auto mb-4 rounded-full">
+            <p class="text-gray-700 text-4xl ">"WeShipIt prices are very affordable and quality of service is great"</p>
+            <p class="text-red-500 text-lg mt-4">- Alex Smith</p>
+          </div>
+    
+        </div>
+    
+      </div>
+<!--    </div>  -->
+  </div>
+
+  <!-- Footer anchored at the bottom -->
+  <footer class="bg-blue-500 text-white p-4">
+    <!-- Example footer content -->
+    <div class="container mx-auto">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-4">Connect with Us</h2>
+            <div class="flex justify-center space-x-4">
+                <a href="http://www.facebook.com" class="text-white hover:text-blue-900">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="http://www.twitter.com" class="text-white hover:text-blue-900">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="http://www.linkedin.com" class="text-white hover:text-blue-900">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="http://www.instagram.com" class="text-white hover:text-blue-900">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+</body>
+</html>
