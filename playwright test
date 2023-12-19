@@ -6,7 +6,7 @@ const { chromium } = require('playwright');
   const page = await context.newPage();
 
   // Navigate to the initial page
-  await page.goto('/Users/tracyharrison/Documents/GitHub/IS601_Final/index.html');
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/index.html');
 
   // Enter a search value
   await page.type('#search', 'your_search_value_here');
@@ -18,12 +18,12 @@ const { chromium } = require('playwright');
   await page.waitForNavigation();
 
   // Assuming the next page URL is known, navigate to the next page
-  await page.goto('your_next_page_url_here');
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page.html');
 
   // Perform additional actions on the next page if needed
 
   // Navigate to the login page
-  await page.goto('/Users/tracyharrison/Documents/GitHub/IS601_Final/Login.html');
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/Login.html');
 
   // Fill in the login form
   await page.type('#username', 'your_username');
@@ -40,7 +40,7 @@ const { chromium } = require('playwright');
   console.log(message);
 
   // Assuming the next page URL is known, navigate to the next page
-  await page.goto('your_next_page_url_here');
+  await page.goto('file:///Users/tracyharrison/Documents/GitHub/IS601_Final/your_next_page_after_login.html');
 
   // Perform additional actions on the next page if needed
 
