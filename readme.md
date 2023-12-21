@@ -6,3 +6,9 @@ Final Figma Design
 
 Playwright Test Outcome
 ![Web capture_20-12-2023_95411_localhost](https://github.com/trace2982/IS601_Final/assets/144746597/341419d7-e5f1-4fa3-bcb0-84c434c32e10)
+
+MailChimp
+![mailchimp_1](https://github.com/trace2982/IS601_Final/assets/144746597/76ba90c0-626a-465c-9279-d4a008fd0b41)
+
+MailChimp
+![mailchimp_2](https://github.com/trace2982/IS601_Final/assets/144746597/11783fe9-d1d8-496c-88bf-0764c6175267)
