@@ -16,7 +16,7 @@ MailChimp
 ![mailchimp_2](https://github.com/trace2982/IS601_Final/assets/144746597/11783fe9-d1d8-496c-88bf-0764c6175267)
 
 Links PDF
-[embed](https://acrobat.adobe.com/link/review?uri=urn:aaid:scds:US:98144128-3da5-3bc3-aea8-69e9342e5777)[/embed]
+[embed](https://acrobat.adobe.com/link/review?uri=urn:aaid:scds:US:98144128-3da5-3bc3-aea8-69e9342e5777)
 
 Presentation
-[embed](https://acrobat.adobe.com/link/review?uri=urn:aaid:scds:US:9041bc08-ac27-3a95-b852-1a9e3d2e7a1b)[/embed] 
+[embed](https://acrobat.adobe.com/link/review?uri=urn:aaid:scds:US:9041bc08-ac27-3a95-b852-1a9e3d2e7a1b)
