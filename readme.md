@@ -12,3 +12,5 @@ MailChimp
 
 MailChimp
 ![mailchimp_2](https://github.com/trace2982/IS601_Final/assets/144746597/11783fe9-d1d8-496c-88bf-0764c6175267)
+
+Links PDF
